@@ -35,7 +35,6 @@ ext {
     /* OSGi */
     trellisApiVersionRange = '0.1.0-SNAPSHOT'
     trellisSpiVersionRange = '0.1.0-SNAPSHOT'
-    defaultOsgiImports = '*'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
 
@@ -81,8 +80,8 @@ jar {
         vendor project.vendor
         license project.license
 
-        instruction 'Import-Package', 'org.apache.commons.rdf.api,*'
-        instruction 'Export-Package', 'edu.amherst.acdc.trellis.service.id'
+        instruction 'Import-Package', '*'
+        instruction 'Export-Package', "edu.amherst.acdc.trellis.service.id;version=${projectOsgiVersion}"
     }
 }
 
