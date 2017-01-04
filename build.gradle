@@ -33,8 +33,6 @@ ext {
     junitVersion = '4.12'
 
     /* OSGi */
-    trellisApiVersionRange = '0.1.0-SNAPSHOT'
-    trellisSpiVersionRange = '0.1.0-SNAPSHOT'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
 

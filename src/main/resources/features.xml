@@ -7,8 +7,8 @@
   <feature name="trellis-service-id" version="${project.version}">
     <details>Installs the Trellis ID generator service</details>
 
-    <feature version="${trellisApiVersionRange}">trellis-api</feature>
-    <feature version="${trellisSpiVersionRange}">trellis-spi</feature>
+    <feature>trellis-api</feature>
+    <feature>trellis-spi</feature>
 
     <bundle dependency="true">mvn:org.apache.commons/commons-rdf-api/${commonsRdfVersion}</bundle>
     <bundle dependency="true">mvn:org.apache.commons/commons-rdf-simple/${commonsRdfVersion}</bundle>
