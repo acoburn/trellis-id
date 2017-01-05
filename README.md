@@ -6,6 +6,6 @@ An ID-generation service for a trellis repository.
 
 ## Building
 
-This code can be built with Gradle:
+This code requires Java 8 and can be built with Gradle:
 
     ./gradlew install
