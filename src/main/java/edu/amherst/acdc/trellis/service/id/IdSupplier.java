@@ -39,7 +39,7 @@ class IdSupplier implements Supplier<IRI> {
      * @param prefix a prefix used for the newly generated IRIs
      */
     public IdSupplier(final IRI prefix) {
-        requireNonNull(prefix);
+        requireNonNull(prefix, "The Id prefix may not be null!");
         this.prefix = prefix.getIRIString();
     }
 
