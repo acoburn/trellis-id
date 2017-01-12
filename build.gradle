@@ -89,7 +89,7 @@ jar {
         instruction 'Export-Package', "edu.amherst.acdc.trellis.service.id;version=${projectOsgiVersion}"
         instruction 'Require-Capability', '''
             osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.registrar)(osgi.extender=osgi.serviceloader.processor))",
-            osgi.serviceloader; filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";cardinality:=multiple'''
+            osgi.serviceloader; filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";cardinality:=at_least_one'''
         instruction 'Provide-Capability', 'osgi.serviceloader; osgi.serviceloader=edu.amherst.acdc.trellis.spi.IdGeneratorService'
     }
 }
