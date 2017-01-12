@@ -18,11 +18,11 @@ package edu.amherst.acdc.trellis.service.id;
 import static java.util.Objects.requireNonNull;
 import static java.util.UUID.randomUUID;
 
+import java.util.ServiceLoader;
 import java.util.function.Supplier;
 
 import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
-import org.apache.commons.rdf.simple.SimpleRDF;
 
 /**
  * A custom Supplier implementation for generating IRI values.
@@ -31,7 +31,15 @@ import org.apache.commons.rdf.simple.SimpleRDF;
  */
 class IdSupplier implements Supplier<IRI> {
 
-    private static final RDF rdf = new SimpleRDF();
+    private static ServiceLoader<RDF> rdfLoader = ServiceLoader.load(RDF.class);
+
+    private static RDF getInstance() {
+        for (final RDF rdf : rdfLoader) {
+            return rdf;
+        }
+        return null;
+    }
+
     private String prefix;
 
     /**
@@ -45,6 +53,6 @@ class IdSupplier implements Supplier<IRI> {
 
     @Override
     public IRI get() {
-        return rdf.createIRI(prefix + randomUUID().toString());
+        return getInstance().createIRI(prefix + randomUUID().toString());
     }
 }

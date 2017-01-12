@@ -37,6 +37,7 @@ ext {
     logbackVersion = '1.1.7'
 
     /* OSGi */
+    spiflyVersion = '1.0.8'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
 
@@ -48,9 +49,9 @@ dependencies {
     compile group: 'edu.amherst.acdc', name: 'trellis-api', version: trellisApiVersion
     compile group: 'edu.amherst.acdc', name: 'trellis-spi', version: trellisSpiVersion
     compile group: 'org.apache.commons', name: 'commons-rdf-api', version: commonsRdfVersion
-    compile group: 'org.apache.commons', name: 'commons-rdf-simple', version: commonsRdfVersion
     compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 
+    testCompile group: 'org.apache.commons', name: 'commons-rdf-simple', version: commonsRdfVersion
     testCompile group: 'junit', name: 'junit', version: junitVersion
     testCompile group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 
@@ -86,7 +87,9 @@ jar {
 
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "edu.amherst.acdc.trellis.service.id;version=${projectOsgiVersion}"
-        instruction 'Require-Capability', 'osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)";resolution:=optional'
+        instruction 'Require-Capability', '''
+            osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.registrar)(osgi.extender=osgi.serviceloader.processor))",
+            osgi.serviceloader; filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";cardinality:=multiple'''
         instruction 'Provide-Capability', 'osgi.serviceloader; osgi.serviceloader=edu.amherst.acdc.trellis.spi.IdGeneratorService'
     }
 }
