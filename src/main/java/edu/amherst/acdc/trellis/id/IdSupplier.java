@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.amherst.acdc.trellis.service.id;
+package edu.amherst.acdc.trellis.id;
 
 import static java.util.Objects.requireNonNull;
 import static java.util.UUID.randomUUID;

@@ -13,22 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.amherst.acdc.trellis.service.id;
-
-import java.util.function.Supplier;
-
-import edu.amherst.acdc.trellis.spi.IdGeneratorService;
-import org.apache.commons.rdf.api.IRI;
-
 /**
- * The IdGeneratorService provides a mechanism for creating new identifiers.
+ * Trellis resource identifier generation service
+ *
+ * <p>This package implements the {@link edu.amherst.acdc.trellis.spi.IdGeneratorService}
+ * using UUID values.</p>
  *
  * @author acoburn
  */
-public class IdGenerator implements IdGeneratorService {
-
-    @Override
-    public Supplier<IRI> getGenerator(final IRI prefix) {
-        return new IdSupplier(prefix);
-    }
-}
+package edu.amherst.acdc.trellis.id;

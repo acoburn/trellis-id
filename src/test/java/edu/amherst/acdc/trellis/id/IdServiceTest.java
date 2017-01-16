@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.amherst.acdc.trellis.service.id;
+package edu.amherst.acdc.trellis.id;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

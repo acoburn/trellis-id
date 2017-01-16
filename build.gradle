@@ -86,7 +86,7 @@ jar {
         license project.license
 
         instruction 'Import-Package', '*'
-        instruction 'Export-Package', "edu.amherst.acdc.trellis.service.id;version=${projectOsgiVersion}"
+        instruction 'Export-Package', "edu.amherst.acdc.trellis.id;version=${projectOsgiVersion}"
         instruction 'Require-Capability', '''
             osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.registrar)(osgi.extender=osgi.serviceloader.processor))",
             osgi.serviceloader; filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";cardinality:=at_least_one'''
