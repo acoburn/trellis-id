@@ -196,9 +196,9 @@ uploadArchives {
             }
 
             scm {
-                connection 'scm:git:git://github.com/acoburn/trellis-service-id.git'
-                developerConnection 'scm:git:git@github.com/acoburn/trellis-service-id.git'
-                url 'https://github.com/acoburn/trellis-service-id'
+                connection 'scm:git:git://github.com/acoburn/trellis-id.git'
+                developerConnection 'scm:git:git@github.com/acoburn/trellis-id.git'
+                url 'https://github.com/acoburn/trellis-id'
                 tag 'HEAD'
             }
 
@@ -233,7 +233,7 @@ checkstyle {
 sonarqube {
     properties {
         property "sonar.projectName", "Amherst College Trellis Repository ID Service"
-        property "sonar.projectKey", "edu.amherst.acdc:trellis-service-id"
+        property "sonar.projectKey", "edu.amherst.acdc:trellis-id"
     }
 }
 
