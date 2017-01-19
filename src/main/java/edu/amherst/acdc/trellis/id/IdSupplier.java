@@ -31,14 +31,16 @@ import org.apache.commons.rdf.api.RDF;
  */
 class IdSupplier implements Supplier<IRI> {
 
-    private static ServiceLoader<RDF> rdfLoader = ServiceLoader.load(RDF.class);
+    private static final ServiceLoader<RDF> rdfLoader = ServiceLoader.load(RDF.class);
 
     private static RDF getInstance() {
-        for (final RDF rdf : rdfLoader) {
-            return rdf;
+        for (final RDF impl : rdfLoader) {
+            return impl;
         }
         return null;
     }
+
+    private static final RDF rdf = getInstance();
 
     private String prefix;
 
@@ -53,6 +55,6 @@ class IdSupplier implements Supplier<IRI> {
 
     @Override
     public IRI get() {
-        return getInstance().createIRI(prefix + randomUUID().toString());
+        return rdf.createIRI(prefix + randomUUID().toString());
     }
 }
