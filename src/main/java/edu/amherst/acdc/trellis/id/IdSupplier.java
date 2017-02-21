@@ -55,6 +55,6 @@ class IdSupplier implements Supplier<IRI> {
 
     @Override
     public IRI get() {
-        return rdf.createIRI(prefix + randomUUID().toString());
+        return rdf.createIRI(prefix + randomUUID());
     }
 }

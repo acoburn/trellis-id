@@ -15,9 +15,10 @@
  */
 package edu.amherst.acdc.trellis.id;
 
+import edu.amherst.acdc.trellis.spi.IdGeneratorService;
+
 import java.util.function.Supplier;
 
-import edu.amherst.acdc.trellis.spi.IdGeneratorService;
 import org.apache.commons.rdf.api.IRI;
 
 /**
