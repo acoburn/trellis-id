@@ -32,4 +32,9 @@ public class IdGenerator implements IdGeneratorService {
     public Supplier<IRI> getGenerator(final IRI prefix) {
         return new IdSupplier(prefix);
     }
+
+    @Override
+    public void close() {
+        // no-op
+    }
 }
