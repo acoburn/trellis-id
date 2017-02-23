@@ -33,8 +33,4 @@ public class IdGenerator implements IdGeneratorService {
         return new IdSupplier(prefix);
     }
 
-    @Override
-    public void close() {
-        // no-op
-    }
 }
