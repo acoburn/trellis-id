@@ -16,9 +16,9 @@
 package edu.amherst.acdc.trellis.id;
 
 import static java.util.Objects.requireNonNull;
+import static java.util.ServiceLoader.load;
 import static java.util.UUID.randomUUID;
 
-import java.util.ServiceLoader;
 import java.util.function.Supplier;
 
 import org.apache.commons.rdf.api.IRI;
@@ -31,16 +31,7 @@ import org.apache.commons.rdf.api.RDF;
  */
 class IdSupplier implements Supplier<IRI> {
 
-    private static final ServiceLoader<RDF> rdfLoader = ServiceLoader.load(RDF.class);
-
-    private static RDF getInstance() {
-        for (final RDF impl : rdfLoader) {
-            return impl;
-        }
-        return null;
-    }
-
-    private static final RDF rdf = getInstance();
+    private static final RDF rdf = load(RDF.class).iterator().next();
 
     private String prefix;
 
