@@ -35,7 +35,7 @@ public class IdServiceTest {
 
     @Test
     public void testSupplier() {
-        final String prefix = "info:trellisrepo/";
+        final String prefix = "trellis:repository/";
         final Supplier<IRI> supplier = new IdSupplier(rdf.createIRI(prefix));
         final IRI id1 = supplier.get();
         final IRI id2 = supplier.get();
@@ -48,7 +48,7 @@ public class IdServiceTest {
     @Test
     public void testGenerator() {
         final String prefix1 = "http://example.org/";
-        final String prefix2 = "info:trellisrepo/a/b/c/";
+        final String prefix2 = "trellis:repository/a/b/c/";
         final IdGeneratorService svc = new IdGenerator();
         final Supplier<IRI> gen1 = svc.getGenerator(rdf.createIRI(prefix1));
         final Supplier<IRI> gen2 = svc.getGenerator(rdf.createIRI(prefix2));
