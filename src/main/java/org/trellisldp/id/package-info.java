@@ -1,6 +1,4 @@
 /*
- * Copyright Amherst College
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,24 +11,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.amherst.acdc.trellis.id;
-
-import edu.amherst.acdc.trellis.spi.IdGeneratorService;
-
-import java.util.function.Supplier;
-
-import org.apache.commons.rdf.api.IRI;
-
 /**
- * The IdGeneratorService provides a mechanism for creating new identifiers.
+ * Trellis resource identifier generation service
+ *
+ * <p>This package implements the {@link org.trellisldp.spi.IdGeneratorService}
+ * using UUID values.</p>
  *
  * @author acoburn
  */
-public class IdGenerator implements IdGeneratorService {
-
-    @Override
-    public Supplier<IRI> getGenerator(final IRI prefix) {
-        return new IdSupplier(prefix);
-    }
-
-}
+package org.trellisldp.id;
