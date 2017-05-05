@@ -222,7 +222,7 @@ checkstyle {
 sonarqube {
     properties {
         property "sonar.projectName", "Trellis Repository ID Service"
-        property "sonar.projectKey", "org.trellisldp-id"
+        property "sonar.projectKey", "org.trellisldp:trellis-id"
         property "sonar.links.homepage", "https://github.com/trellis-ldp/trellis"
         property "sonar.links.issue", "https://github.com/trellis-ldp/trellis-id/issues"
         property "sonar.links.scm_dev", "scm:git:git@github.com:trellis-ldp/trellis-id.git"
