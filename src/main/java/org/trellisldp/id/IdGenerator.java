@@ -13,11 +13,10 @@
  */
 package org.trellisldp.id;
 
-import org.trellisldp.spi.IdGeneratorService;
-
 import java.util.function.Supplier;
 
 import org.apache.commons.rdf.api.IRI;
+import org.trellisldp.spi.IdGeneratorService;
 
 /**
  * The IdGeneratorService provides a mechanism for creating new identifiers.
