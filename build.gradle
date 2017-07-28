@@ -1,8 +1,8 @@
 plugins {
     id 'com.github.ben-manes.versions' version '0.15.0'
     id 'com.github.hierynomus.license' version '0.13.1'
-    id 'net.researchgate.release' version '2.4.0'
-    id 'org.sonarqube' version '2.2.1'
+    id 'net.researchgate.release' version '2.6.0'
+    id 'org.sonarqube' version '2.5'
 }
 
 apply plugin: 'maven'
@@ -31,14 +31,13 @@ ext {
     trellisApiVersion = '0.1.0-SNAPSHOT'
     trellisSpiVersion = '0.1.0-SNAPSHOT'
     commonsRdfVersion = '0.3.0-incubating'
-    slf4jVersion = '1.7.21'
+    slf4jVersion = '1.7.25'
 
     /* Testing */
     junitVersion = '4.12'
-    logbackVersion = '1.1.7'
+    logbackVersion = '1.2.3'
 
     /* OSGi */
-    spiflyVersion = '1.0.8'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
 
@@ -88,10 +87,6 @@ jar {
 
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "org.trellisldp.id;version=${projectOsgiVersion}"
-        instruction 'Require-Capability', '''
-            osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.registrar)(osgi.extender=osgi.serviceloader.processor))",
-            osgi.serviceloader; filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";cardinality:=at_least_one'''
-        instruction 'Provide-Capability', 'osgi.serviceloader; osgi.serviceloader=org.trellisldp.spi.IdGeneratorService'
     }
 }
 
