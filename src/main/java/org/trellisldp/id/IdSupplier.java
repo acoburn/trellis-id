@@ -13,9 +13,10 @@
  */
 package org.trellisldp.id;
 
-import static java.util.Objects.requireNonNull;
 import static java.util.UUID.randomUUID;
+import static java.util.stream.IntStream.rangeClosed;
 
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -26,18 +27,29 @@ import java.util.function.Supplier;
 class IdSupplier implements Supplier<String> {
 
     private String prefix;
+    private Integer levels;
+    private Integer length;
 
     /**
      * Create a new IdSupplier with a configurable prefix
      * @param prefix a prefix used for the newly generated IRIs
+     * @param levels the number o levels of hierarchy to add
+     * @param length the length of each hierarchy segment
      */
-    public IdSupplier(final String prefix) {
-        requireNonNull(prefix, "The Id prefix may not be null!");
+    public IdSupplier(final String prefix, final Integer levels, final Integer length) {
         this.prefix = prefix;
+        this.levels = levels;
+        this.length = length;
     }
 
     @Override
     public String get() {
-        return prefix + randomUUID();
+        final String id = randomUUID().toString();
+        final String nodash = id.replaceAll("-", "");
+        final StringJoiner joiner = new StringJoiner("/");
+        rangeClosed(0, levels - 1).forEach(x -> joiner.add(nodash.substring(x * length, (x + 1) * length)));
+        joiner.add(id);
+
+        return prefix + joiner;
     }
 }

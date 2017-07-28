@@ -13,6 +13,8 @@
  */
 package org.trellisldp.id;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.function.Supplier;
 
 import org.trellisldp.spi.IdentifierService;
@@ -24,9 +26,30 @@ import org.trellisldp.spi.IdentifierService;
  */
 public class UUIDGenerator implements IdentifierService {
 
+    private Integer levels;
+    private Integer length;
+
+    /**
+     * Create a UUID Generator
+     */
+    public UUIDGenerator() {
+        this(0, 0);
+    }
+
+    /**
+     * Create a UUID Generator with hierarchy
+     * @param levels the level of hierarchy to create
+     * @param length the length of each hierarchical segment
+     */
+    public UUIDGenerator(final Integer levels, final Integer length) {
+        this.levels = levels;
+        this.length = length;
+    }
+
     @Override
     public Supplier<String> getSupplier(final String prefix) {
-        return new IdSupplier(prefix);
+        requireNonNull(prefix, "The Id prefix may not be null!");
+        return new IdSupplier(prefix, levels, length);
     }
 
     @Override

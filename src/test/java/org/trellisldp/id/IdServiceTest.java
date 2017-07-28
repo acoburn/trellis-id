@@ -13,6 +13,7 @@
  */
 package org.trellisldp.id;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -29,7 +30,7 @@ public class IdServiceTest {
     @Test
     public void testSupplier() {
         final String prefix = "trellis:repository/";
-        final Supplier<String> supplier = new IdSupplier(prefix);
+        final Supplier<String> supplier = new IdSupplier(prefix, 0, 0);
         final String id1 = supplier.get();
         final String id2 = supplier.get();
 
@@ -53,5 +54,20 @@ public class IdServiceTest {
         assertFalse(id1.equals(prefix1));
         assertTrue(id2.startsWith(prefix2));
         assertFalse(id2.equals(prefix2));
+    }
+
+    @Test
+    public void testGenerator2() {
+        final IdentifierService svc = new UUIDGenerator(4, 2);
+        final Supplier<String> gen = svc.getSupplier();
+
+        final String id = gen.get();
+
+        final String[] parts = id.split("/");
+        assertEquals(5L, parts.length);
+        assertEquals(parts[0], parts[4].substring(0, 2));
+        assertEquals(parts[1], parts[4].substring(2, 4));
+        assertEquals(parts[2], parts[4].substring(4, 6));
+        assertEquals(parts[3], parts[4].substring(6, 8));
     }
 }
