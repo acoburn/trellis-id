@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.function.Supplier;
 
-import org.trellisldp.spi.IdSupplierService;
+import org.trellisldp.spi.IdentifierService;
 import org.junit.Test;
 
 /**
@@ -42,7 +42,7 @@ public class IdServiceTest {
     public void testGenerator() {
         final String prefix1 = "http://example.org/";
         final String prefix2 = "trellis:repository/a/b/c/";
-        final IdSupplierService svc = new IdGenerator();
+        final IdentifierService svc = new UUIDGenerator();
         final Supplier<String> gen1 = svc.getSupplier(prefix1);
         final Supplier<String> gen2 = svc.getSupplier(prefix2);
 
