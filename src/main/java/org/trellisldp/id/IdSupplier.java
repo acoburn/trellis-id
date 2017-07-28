@@ -14,22 +14,16 @@
 package org.trellisldp.id;
 
 import static java.util.Objects.requireNonNull;
-import static java.util.ServiceLoader.load;
 import static java.util.UUID.randomUUID;
 
 import java.util.function.Supplier;
 
-import org.apache.commons.rdf.api.IRI;
-import org.apache.commons.rdf.api.RDF;
-
 /**
- * A custom Supplier implementation for generating IRI values.
+ * A custom Supplier implementation for generating identifiers.
  *
  * @author acoburn
  */
-class IdSupplier implements Supplier<IRI> {
-
-    private static final RDF rdf = load(RDF.class).iterator().next();
+class IdSupplier implements Supplier<String> {
 
     private String prefix;
 
@@ -37,13 +31,13 @@ class IdSupplier implements Supplier<IRI> {
      * Create a new IdSupplier with a configurable prefix
      * @param prefix a prefix used for the newly generated IRIs
      */
-    public IdSupplier(final IRI prefix) {
+    public IdSupplier(final String prefix) {
         requireNonNull(prefix, "The Id prefix may not be null!");
-        this.prefix = prefix.getIRIString();
+        this.prefix = prefix;
     }
 
     @Override
-    public IRI get() {
-        return rdf.createIRI(prefix + randomUUID());
+    public String get() {
+        return prefix + randomUUID();
     }
 }

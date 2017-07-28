@@ -15,19 +15,22 @@ package org.trellisldp.id;
 
 import java.util.function.Supplier;
 
-import org.apache.commons.rdf.api.IRI;
-import org.trellisldp.spi.IdGeneratorService;
+import org.trellisldp.spi.IdSupplierService;
 
 /**
  * The IdGeneratorService provides a mechanism for creating new identifiers.
  *
  * @author acoburn
  */
-public class IdGenerator implements IdGeneratorService {
+public class IdGenerator implements IdSupplierService {
 
     @Override
-    public Supplier<IRI> getGenerator(final IRI prefix) {
+    public Supplier<String> getSupplier(final String prefix) {
         return new IdSupplier(prefix);
     }
 
+    @Override
+    public Supplier<String> getSupplier() {
+        return getSupplier("");
+    }
 }

@@ -18,10 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.function.Supplier;
 
-import org.trellisldp.spi.IdGeneratorService;
-import org.apache.commons.rdf.api.IRI;
-import org.apache.commons.rdf.api.RDF;
-import org.apache.commons.rdf.simple.SimpleRDF;
+import org.trellisldp.spi.IdSupplierService;
 import org.junit.Test;
 
 /**
@@ -29,17 +26,15 @@ import org.junit.Test;
  */
 public class IdServiceTest {
 
-    private static final RDF rdf = new SimpleRDF();
-
     @Test
     public void testSupplier() {
         final String prefix = "trellis:repository/";
-        final Supplier<IRI> supplier = new IdSupplier(rdf.createIRI(prefix));
-        final IRI id1 = supplier.get();
-        final IRI id2 = supplier.get();
+        final Supplier<String> supplier = new IdSupplier(prefix);
+        final String id1 = supplier.get();
+        final String id2 = supplier.get();
 
-        assertTrue(id1.getIRIString().startsWith(prefix));
-        assertTrue(id2.getIRIString().startsWith(prefix));
+        assertTrue(id1.startsWith(prefix));
+        assertTrue(id2.startsWith(prefix));
         assertFalse(id1.equals(id2));
     }
 
@@ -47,16 +42,16 @@ public class IdServiceTest {
     public void testGenerator() {
         final String prefix1 = "http://example.org/";
         final String prefix2 = "trellis:repository/a/b/c/";
-        final IdGeneratorService svc = new IdGenerator();
-        final Supplier<IRI> gen1 = svc.getGenerator(rdf.createIRI(prefix1));
-        final Supplier<IRI> gen2 = svc.getGenerator(rdf.createIRI(prefix2));
+        final IdSupplierService svc = new IdGenerator();
+        final Supplier<String> gen1 = svc.getSupplier(prefix1);
+        final Supplier<String> gen2 = svc.getSupplier(prefix2);
 
-        final IRI id1 = gen1.get();
-        final IRI id2 = gen2.get();
+        final String id1 = gen1.get();
+        final String id2 = gen2.get();
 
-        assertTrue(id1.getIRIString().startsWith(prefix1));
-        assertFalse(id1.getIRIString().equals(prefix1));
-        assertTrue(id2.getIRIString().startsWith(prefix2));
-        assertFalse(id2.getIRIString().equals(prefix2));
+        assertTrue(id1.startsWith(prefix1));
+        assertFalse(id1.equals(prefix1));
+        assertTrue(id2.startsWith(prefix2));
+        assertFalse(id2.equals(prefix2));
     }
 }
