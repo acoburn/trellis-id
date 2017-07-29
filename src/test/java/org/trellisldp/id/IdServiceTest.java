@@ -70,4 +70,13 @@ public class IdServiceTest {
         assertEquals(parts[2], parts[4].substring(4, 6));
         assertEquals(parts[3], parts[4].substring(6, 8));
     }
+
+    @Test
+    public void testSupplier2() {
+        final Supplier<String> supplier = new UUIDGenerator().getSupplier();
+        final String id1 = supplier.get();
+        final String id2 = supplier.get();
+
+        assertFalse(id1.equals(id2));
+    }
 }
