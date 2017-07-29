@@ -14,7 +14,10 @@
 package org.trellisldp.id;
 
 import static java.util.Objects.requireNonNull;
+import static java.util.UUID.randomUUID;
+import static java.util.stream.IntStream.rangeClosed;
 
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 import org.trellisldp.spi.IdentifierService;
@@ -26,34 +29,32 @@ import org.trellisldp.spi.IdentifierService;
  */
 public class UUIDGenerator implements IdentifierService {
 
-    private Integer levels;
-    private Integer length;
+    @Override
+    public Supplier<String> getSupplier(final String prefix, final Integer hierarchy, final Integer length) {
 
-    /**
-     * Create a UUID Generator
-     */
-    public UUIDGenerator() {
-        this(0, 0);
-    }
-
-    /**
-     * Create a UUID Generator with hierarchy
-     * @param levels the level of hierarchy to create
-     * @param length the length of each hierarchical segment
-     */
-    public UUIDGenerator(final Integer levels, final Integer length) {
-        this.levels = levels;
-        this.length = length;
+        requireNonNull(prefix, "The Id prefix may not be null!");
+        requireNonNull(hierarchy, "The hierarchy value may not be null!");
+        requireNonNull(length, "The length value may not be null!");
+        return () -> getId(prefix, hierarchy, length);
     }
 
     @Override
     public Supplier<String> getSupplier(final String prefix) {
-        requireNonNull(prefix, "The Id prefix may not be null!");
-        return new IdSupplier(prefix, levels, length);
+        return getSupplier(prefix, 0, 0);
     }
 
     @Override
     public Supplier<String> getSupplier() {
         return getSupplier("");
+    }
+
+    private static String getId(final String prefix, final Integer hierarchy, final Integer length) {
+        final String id = randomUUID().toString();
+        final String nodash = id.replaceAll("-", "");
+        final StringJoiner joiner = new StringJoiner("/");
+        rangeClosed(0, hierarchy - 1).forEach(x -> joiner.add(nodash.substring(x * length, (x + 1) * length)));
+        joiner.add(id);
+
+        return prefix + joiner;
     }
 }

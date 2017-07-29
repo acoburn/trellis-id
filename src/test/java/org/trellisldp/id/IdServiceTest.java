@@ -30,7 +30,7 @@ public class IdServiceTest {
     @Test
     public void testSupplier() {
         final String prefix = "trellis:repository/";
-        final Supplier<String> supplier = new IdSupplier(prefix, 0, 0);
+        final Supplier<String> supplier = new UUIDGenerator().getSupplier(prefix);
         final String id1 = supplier.get();
         final String id2 = supplier.get();
 
@@ -58,8 +58,8 @@ public class IdServiceTest {
 
     @Test
     public void testGenerator2() {
-        final IdentifierService svc = new UUIDGenerator(4, 2);
-        final Supplier<String> gen = svc.getSupplier();
+        final IdentifierService svc = new UUIDGenerator();
+        final Supplier<String> gen = svc.getSupplier("", 4, 2);
 
         final String id = gen.get();
 
