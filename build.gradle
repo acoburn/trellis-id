@@ -52,8 +52,9 @@ dependencies {
 
     implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 
-    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
     testImplementation group: 'junit', name: 'junit', version: junitVersion
+
+    testRuntimeClasspath group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 
     buildToolsConfig 'org.trellisldp:trellis-build-tools:0.2.0'
 }
