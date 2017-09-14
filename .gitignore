@@ -1,2 +1,3 @@
 .gradle
+module-info.java
 build
