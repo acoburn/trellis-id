@@ -62,10 +62,6 @@ repositories {
     jcenter()
     mavenCentral()
     mavenLocal()
-    // TODO -- remove this after the first release of the API
-    maven {
-        url "https://oss.sonatype.org/content/repositories/snapshots"
-    }
 }
 
 gradle.projectsEvaluated {
