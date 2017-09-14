@@ -30,8 +30,7 @@ ext {
     license = 'Apache 2'
 
     /* Dependencies */
-    trellisApiVersion = '0.1.0-SNAPSHOT'
-    trellisSpiVersion = '0.1.0-SNAPSHOT'
+    trellisSpiVersion = '0.1.0'
     commonsRdfVersion = '0.3.0-incubating'
     slf4jVersion = '1.7.25'
 
