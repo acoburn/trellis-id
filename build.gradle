@@ -30,12 +30,12 @@ ext {
     license = 'Apache 2'
 
     /* Dependencies */
-    trellisSpiVersion = '0.1.1'
+    trellisSpiVersion = '0.1.2'
     commonsRdfVersion = '0.3.0-incubating'
-    slf4jVersion = '1.7.25'
 
     /* Testing */
     junitVersion = '4.12'
+    slf4jVersion = '1.7.25'
     logbackVersion = '1.2.3'
 
     /* OSGi */
@@ -49,8 +49,7 @@ configurations {
 dependencies {
     api group: 'org.trellisldp', name: 'trellis-spi', version: trellisSpiVersion
 
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-
+    testImplementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
     testImplementation group: 'junit', name: 'junit', version: junitVersion
 
     testRuntimeClasspath group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
