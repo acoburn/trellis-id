@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.function.Supplier;
 
-import org.trellisldp.spi.IdentifierService;
+import org.trellisldp.api.IdentifierService;
 import org.junit.Test;
 
 /**

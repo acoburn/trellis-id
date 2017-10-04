@@ -20,7 +20,7 @@ import static java.util.stream.IntStream.rangeClosed;
 import java.util.StringJoiner;
 import java.util.function.Supplier;
 
-import org.trellisldp.spi.IdentifierService;
+import org.trellisldp.api.IdentifierService;
 
 /**
  * The IdentifierService provides a mechanism for creating new identifiers.

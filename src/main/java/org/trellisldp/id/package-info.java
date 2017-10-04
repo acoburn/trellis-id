@@ -14,7 +14,7 @@
 /**
  * Trellis resource identifier generation service
  *
- * <p>This package implements the {@link org.trellisldp.spi.IdentifierService}
+ * <p>This package implements the {@link org.trellisldp.api.IdentifierService}
  * using UUID values.</p>
  *
  * @author acoburn
