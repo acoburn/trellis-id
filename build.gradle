@@ -30,7 +30,7 @@ ext {
     license = 'Apache 2'
 
     /* Dependencies */
-    trellisApiVersion = '0.2.0'
+    trellisApiVersion = '0.2.1'
 
     /* Testing */
     junitVersion = '4.12'
