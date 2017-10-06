@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"org.trellisldp.id","l":"UUIDGenerator"}]
