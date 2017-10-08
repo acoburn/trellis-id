@@ -38,6 +38,7 @@ ext {
     logbackVersion = '1.2.3'
 
     /* OSGi */
+    trellisApiVersionRange = '[0.3,1)'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
 
