@@ -33,7 +33,7 @@ ext {
     trellisApiVersion = '0.3.0'
 
     /* Testing */
-    junitVersion = '4.12'
+    junitVersion = '4.12.1'
     slf4jVersion = '1.7.25'
     logbackVersion = '1.2.3'
 
@@ -50,7 +50,7 @@ dependencies {
     api group: 'org.trellisldp', name: 'trellis-api', version: trellisApiVersion
 
     testImplementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-    testImplementation group: 'junit', name: 'junit', version: junitVersion
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junitVersion
 
     testRuntimeClasspath group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 
