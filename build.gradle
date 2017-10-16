@@ -33,9 +33,9 @@ ext {
     trellisApiVersion = '0.3.0'
 
     /* Testing */
-    junitVersion = '4.12.1'
-    slf4jVersion = '1.7.25'
-    logbackVersion = '1.2.3'
+    junitVersion = '5.0.1'
+    junitPlatformVersion = '1.0.1'
+    apiguardianVersion = '1.0.0'
 
     /* OSGi */
     trellisApiVersionRange = '[0.3,1)'
@@ -49,10 +49,9 @@ configurations {
 dependencies {
     api group: 'org.trellisldp', name: 'trellis-api', version: trellisApiVersion
 
-    testImplementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junitVersion
-
-    testRuntimeClasspath group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+    testImplementation group: 'org.apiguardian', name: 'apiguardian-api', version: apiguardianVersion
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: junitPlatformVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
 
     buildToolsConfig 'org.trellisldp:trellis-build-tools:0.2.0'
 }
